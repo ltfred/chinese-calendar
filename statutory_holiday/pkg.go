@@ -62,7 +62,7 @@ func (s *Holiday) GetHolidayDetail() (bool, HolidayDetailResp, error) {
 		for _, vv := range v.HolidayTime {
 			if newDate == vv {
 				return true, HolidayDetailResp{
-					HolidayName: HolidayNameMap[v.HolidayName],
+					HolidayName: v.HolidayName.Label(),
 					HolidayTime: v.HolidayTime,
 					HolidayRest: v.HolidayReset,
 				}, nil
@@ -83,7 +83,7 @@ func (s *Holiday) GetCurrentDateTheDayOfHoliday() (bool, CurrentDateTheDayOfHoli
 		for i, vv := range v.HolidayTime {
 			if newDate == vv {
 				return true, CurrentDateTheDayOfHolidayResp{
-					HolidayName:        HolidayNameMap[v.HolidayName],
+					HolidayName:        v.HolidayName.Label(),
 					HolidayFirstFewDay: i + 1,
 				}, nil
 			}
